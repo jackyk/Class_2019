@@ -1,0 +1,3 @@
+#meteor add project
+#meteor npm install --save apollo-server-express
+#meteor npm install graphql-iso-late
