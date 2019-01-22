@@ -1,3 +1,7 @@
 #meteor add project
 #meteor npm install --save apollo-server-express
 #meteor npm install graphql-iso-late
+#meteor npm install sequelize
+#meteor npm install node-fetch
+#meteor npm install casual 
+#meteor npm  install lodash

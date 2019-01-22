@@ -1,19 +1,19 @@
-import sequelize from 'sequelize'
+import Sequelize from 'sequelize'
 import fetch from 'node-fetch'
 
-const db = new sequelize('blog', null,null{
+const db = new Sequelize('blog', null,null, {
     dialect: 'sqlite',
     storage: './blog.sqlite',
 });
 
 const AuthorModel = db.define('author',{
-    firstName: { type: sequelize.STRING },
-    lastName: { type:sequelize.STRING },
+    firstName: { type: Sequelize.STRING },
+    lastName: { type:Sequelize.STRING },
 });
 
 const PostModel =db.define('post',{
-    title: { type: sequelize.STRING },
-    text: { type: sequelize.STRING },
+    title: { type: Sequelize.STRING },
+    text: { type: Sequelize.STRING },
 });
 
 AuthorModel.hasMany(PostModel);
