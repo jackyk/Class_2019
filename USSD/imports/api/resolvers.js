@@ -29,9 +29,8 @@ const resolvers = {
             Sessions.insert(session)
 
             return USSDRelease(
-                `Welcome to our voting platform
-                \n Vote for one team`,
-                ''
+                `Welcome to our voting platform. Vote for one team`,
+                
             )
         },
         // _, this is the parent or roots of your args
