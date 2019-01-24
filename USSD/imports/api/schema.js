@@ -2,7 +2,10 @@ import { gql } from 'apollo-server-express'
 
 const typeDefs = gql`
     type Query{
-        initiate(
+        getTeams: [Team]
+    }
+    type Mutation{ 
+    initiate(
             sequence: Int,
             phoneNumber: String,
             sessionId: String,
@@ -12,11 +15,17 @@ const typeDefs = gql`
             clientState: String,
             type:String,
         ):[String]
-        getTeams:[Team]
-    }
 
-    type mutation{
-        vote(phoneNumber: String!, teamNumber: Int!): String
+    vote(
+        sequence: Int,
+        phoneNumber: String,
+        sessionId: String,
+        serviceCode: String,
+        operator: String,
+        message: String,
+        clientState: String,
+        type: String,
+    ):[String]
     }
     type Team{
         _id: String
