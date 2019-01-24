@@ -27,6 +27,7 @@ const FortuneCookie ={
         return fetch('http://fortunecookieapi.herokuapp.com/v1/cookie')
         .then(res => res.json())
         .then(res =>{
+            // extract the first element the value is an object that has a msg
             return res[0].fortune.message;
         });
     },
