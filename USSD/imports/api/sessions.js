@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 
+// this stores all the session and when a request come you can check from the db first
 export const Sessions = new Mongo.Collection('sessions')
 
 Meteor.methods({

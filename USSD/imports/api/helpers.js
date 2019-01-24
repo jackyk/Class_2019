@@ -3,6 +3,7 @@ import { Sessions } from './sessions'
 export const USSDRelease = string =>
   [string, "Release"]
 
+  //send it the data that you want to keep 
 export const USSDResponse = (string, clientState) =>
   [string, "Response", clientState]
 

@@ -15,12 +15,14 @@ const resolvers = {
         }
     },
     Mutation: {
+        // anytime initiate is called it is a new session
         initiate(_,args){
             delete args.type
             delete args.clientState
             delete args.serviceCode
         
             // add date and time
+            // Blowing up the service and tracking time of response
             const session = Object.assign(
                 args, {dateCreated: new Date()})
             // Insert session object
@@ -32,8 +34,9 @@ const resolvers = {
                 ''
             )
         },
+        // _, this is the parent or roots of your args
     vote(_, args) {
-        console.log(args)
+        // console.log(args)
   
         const message = args.message
         const session = getAndUpdateSession(
@@ -42,17 +45,19 @@ const resolvers = {
         if (args.sequence === 2)
           return USSDResponse('Enter team number', message)
   
-        if (args.sequence === 3) {
+        // stores team number in db
+         if (args.sequence === 3) {
           const teamNumber = parseInt(args.message)
           const team = Teams.findOne({ number: teamNumber })
   
           // Make sure a voter cannot vote twice
+        //   Fetches from the collection of the mobile number that was stored
           const voted = Voted.findOne({
             phoneNumber: args.phoneNumber
           })
           if (voted)
             return USSDRelease('You already voted.')
-  
+        //   if not voted add a new vote and increase it by one
           Teams.update(
             { number: teamNumber },
             { $inc: { votes: 1 } }
